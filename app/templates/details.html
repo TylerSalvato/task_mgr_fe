@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Task Details{% endblock title %}
+
+{% block content %}
+<h1>Task Details</h1>
+<form method="GET" action="{{ url_for('task_details', pk=task['id']) }}">
+    <p>
+        <label for="summary">Summary</label>
+        <input type="text" value="{{ task['summary'] }}" name="summary" id="id_summary">
+    </p>
+    <p>
+        <label for="description">Description</label>
+        <input type="text" value="{{ task['description'] }}" name="description" id="id_description">
+    </p>
+    <input type="hidden" value="{{ task['is_done'] }}" name="is_done" id="id_is_done">
+    <input type="submit" class="btn btn-success" value="Edit">
+</form>
+{% endblock content %}

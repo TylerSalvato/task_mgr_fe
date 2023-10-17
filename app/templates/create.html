@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Create task{% endblock title %}
+
+{% block content %}
+
+<h1>Create task</h1>
+
+<form class="form-group" method="POST" action="{{ url_for('create_task') }}">
+    <p>
+        <label for="summary">Summary</label>
+        <input class="form-control" type="text" name="summary" id="id_summary">
+    </p>
+    <p>
+        <label for="summary">Description</label>
+        <input class="form-control" type="text" name="description" id="id_description">
+    </p>
+
+    <input type="submit" class="btn btn-success" value="Create">
+</form>
+
+{% endblock content %}

@@ -1,0 +1,29 @@
+check out 2 hours in for changes to bootstrap on base.html.
+
+            <td>
+                {% if "risk" in task['description'] %}
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUIcmlja3JvbGw%3D" class="btn btn-danger">Delete</a>
+                {% else %}
+                <a href="{{ url_for('delete_task', pk=task['id']) }}" class="btn btn-danger">Delete</a>
+                {% endif %}
+            </td>
+
+            <a class="btn btn-primary" href="{{ url_for('create_form') }}">Create task</a><!-- <a class="btn btn-primary" href="{{ url_for('create_form') }}">Create task</a> -->
+
+            {% if "risk" in task['description'] %}
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUIcmlja3JvbGw%3D" class="btn btn-danger">Delete</a>
+                {% else %}
+
+                {% endif %}
+
+                @app.get("/details")
+def task_details(pk):
+    url = "%s/%s/%s" % (BACKEND_URL, "tasks", pk)
+    response = requests.get(url)
+    if response.staus_code == 204:
+        #task = response.json().get("task")
+        return render_template("details.html")
+    return (
+        render_template("error.html", err=response.status_code),
+        response.status_code
+    )
